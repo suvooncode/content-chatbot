@@ -290,9 +290,14 @@ import config from './config.js';
                   {
                     responseTxt = response.answer;
                   }
-                  if (response.related_files && response.related_files.length > 0) {
-                  refFIles = response.related_files[0]
-                  }
+                  // v1 api
+                  // if (response.related_files && response.related_files.length > 0) {
+                  // refFIles = response.related_files[0]
+                  // }
+
+                  // v2 api
+                  refFIles = response.related_files !="No file" ? '<a target="_blank" href="'+response.related_files+'">'+response.related_files+'</a>' : "No file";
+                  
                   markupTemplate = '<div class="tyn-qa-item"><div class="tyn-qa-avatar"><div class="tyn-media tyn-size-md"><img src="images/avatar/bot-1.jpg" alt=""></div></div><div class="tyn-qa-message tyn-text-block">'+responseTxt+'<br></br><b>Ref files:</b> '+refFIles+'</div></div>';
                   chatReply.insertAdjacentHTML("beforeend", markupTemplate);
                   $(".loader").hide();
